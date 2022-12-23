@@ -17,6 +17,6 @@ jobs:
         creds: ${{secrets.AZURE_CREDENTIALS}}
     - name: Submit training run
       run: |
-        az ml job create --file src/job.yml
+        az ml job create --resource-group e2e-ml-ops --workspace e2e-ml-ops-ws --file src/job.yml
 
 
