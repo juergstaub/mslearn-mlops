@@ -5,7 +5,6 @@ on:
 
 jobs:
   train:
-    id: e2e-ml-ops-ws-job-3
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
@@ -16,5 +15,8 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Submit training run
+      run: |
+        az ml job create --file src/job.yml
 
 
