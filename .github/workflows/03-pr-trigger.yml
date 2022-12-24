@@ -33,7 +33,7 @@ jobs:
         python -m pip -r requirements.txt
     - name: Run unit tests
       run: |
-        python tests/test_train.py
+        python tests/
 
 
 
