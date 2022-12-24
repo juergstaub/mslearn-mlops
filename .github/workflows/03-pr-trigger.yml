@@ -6,6 +6,7 @@ on:
 
 jobs:
   pr:
+    name: pr
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
