@@ -5,30 +5,16 @@ on:
     types: [opened, reopened]
 
 jobs:
-  pr:
-    name: pr
-    runs-on: ubuntu-latest
-    steps:
-    - name: Check out repo
-      uses: actions/checkout@main
-    - name: Install az ml extension
-      run: az extension add -n ml -y
-    - name: Azure login
-      uses: azure/login@v1
-      with:
-        creds: ${{secrets.AZURE_CREDENTIALS}}
   lint:
     name: lint
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
       uses: actions/checkout@main
-    - name: Install az ml extension
-      run: az extension add -n ml -y
-    - name: Azure login
-      uses: azure/login@v1
+    - name: Use Python version 3.8
+      uses: actions/setup-python@v3
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}}
+        python-version: '3.8'
     - name: Install Flake8
       run: |
         python -m pip install flake8
@@ -41,15 +27,13 @@ jobs:
     steps:
     - name: Check out repo
       uses: actions/checkout@main
-    - name: Install az ml extension
-      run: az extension add -n ml -y
-    - name: Azure login
-      uses: azure/login@v1
+    - name: Use Python version 3.8
+      uses: actions/setup-python@v3
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}}
+        python-version: '3.8'
     - name: Install dependencies
       run: |
-        python -m pip -r requirements.txt
+        pip install -r requirements.txt
     - name: Run unit tests
       run: |
         python tests/
