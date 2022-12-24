@@ -1,8 +1,9 @@
 name: Pull request workflow
 
-pull_request:
+on:
+  pull_request:
     types: [opened, reopened]
-    
+
 jobs:
   pr:
     runs-on: ubuntu-latest
