@@ -17,6 +17,7 @@ jobs:
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
   lint:
+    name: lint
     runs-on: ubuntu-latest
     steps:
     - name: Install Flake8
@@ -26,6 +27,7 @@ jobs:
       run: | 
         flake8 src/model/
   tests:
+    name: tests
     runs-on: ubuntu-latest
     steps:
     - name: Install dependencies
