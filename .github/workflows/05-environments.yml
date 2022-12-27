@@ -1,7 +1,9 @@
 name: Trigger an Azure Machine Learning job when changes being pushed to the main branch
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
 
 jobs:
   experiment:
