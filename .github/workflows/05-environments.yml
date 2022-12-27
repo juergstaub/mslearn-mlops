@@ -18,7 +18,7 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
-    - name: Submit training run
+    - name: Submit training run on development environment
       run: |
         az ml job create --resource-group e2e-ml-ops --workspace e2e-ml-ops-ws --file src/job.yml --set inputs.training_data.path="azureml:diabetes-dev-folder@latest"
   production:
@@ -33,6 +33,6 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
-    - name: Submit training run
+    - name: Submit training run on production environment
       run: |
         az ml job create --resource-group e2e-ml-ops --workspace e2e-ml-ops-ws --file src/job.yml --set inputs.training_data.path="azureml:diabetes-prod-folder@latest"
